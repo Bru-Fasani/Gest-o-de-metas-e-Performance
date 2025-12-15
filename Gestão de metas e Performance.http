@@ -1,0 +1,6 @@
+@Gestão_de_metas_e_Performance_HostAddress = http://localhost:5209
+
+GET {{Gestão_de_metas_e_Performance_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
