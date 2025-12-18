@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Gestão_de_metas_e_Performance.DTOs
 {
-    public class MetaDTO
+    public class MetaDTO 
     {
         [Key]
-        public int Id { get; set; }
+        public int Idmeta { get; set; }
 
         [Required]
         public string? Title { get; set; }

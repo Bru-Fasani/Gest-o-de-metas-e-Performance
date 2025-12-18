@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using Gestão_de_metas_e_Performance.DBContext;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Gestão_de_metas_e_Performance.DTOs;
 
 
 namespace Gestão_de_metas_e_Performance.Controllers
@@ -10,25 +11,25 @@ namespace Gestão_de_metas_e_Performance.Controllers
     public class UserController : ControllerBase
     {
         [HttpGet("{Id}")]
-        public IActionResult GetUserById(int Id)
+        public ActionResult<UserDTO> GetUserById(int Id)
         {
             return Ok();
         }
 
         [HttpPost]
-        public IActionResult CreateUser(User user)
+        public ActionResult<UserDTO> CreateUser(User user)
         {
            return Ok(user);
         }
 
         [HttpPut("{Id}")]
-        public IActionResult UpdateUser(int Id, User user)
+        public ActionResult<UserDTO> UpdateUser(int Id, User user)
         {
             return Ok(user);
         }
 
         [HttpDelete("{Id}")]
-        public IActionResult DeleteUser(int Id)
+        public ActionResult<UserDTO> DeleteUser(int Id)
         {
             return Ok();
         }

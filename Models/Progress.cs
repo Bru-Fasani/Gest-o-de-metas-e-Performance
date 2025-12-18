@@ -2,9 +2,9 @@
 
 namespace Gestão_de_metas_e_Performance.Models
 {
-    public class Progress : Meta
+    public class Progress 
     {
-        
+        public int IdProgress { get; set; }
         public string? Value { get; set; }
         public string? Observation { get; set; }
         public EnumStatus ProgressStatus { get; set; }

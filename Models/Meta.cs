@@ -6,7 +6,7 @@ namespace Gestão_de_metas_e_Performance.Models
     public class Meta
     {
         [Key]
-        public int Id { get; set; }
+        public int IdMeta { get; set; }
 
         [Required]
         public string? Title { get; set; }
