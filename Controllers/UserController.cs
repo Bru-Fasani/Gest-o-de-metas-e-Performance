@@ -1,5 +1,5 @@
 ﻿using Gestão_de_metas_e_Performance.Models;
-using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Routing;
 using Microsoft.AspNetCore.Mvc;
 using Gestão_de_metas_e_Performance.DBContext;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -10,28 +10,52 @@ namespace Gestão_de_metas_e_Performance.Controllers
 {
     public class UserController : ControllerBase
     {
-        [HttpGet("{Id}")]
-        public ActionResult<UserDTO> GetUserById(int Id)
+        [ApiController]
+        [Route("api/[controller]")]
+        public class TarefasController : ControllerBase
         {
-            return Ok();
-        }
+            private readonly AppDbContext _context;
 
-        [HttpPost]
-        public ActionResult<UserDTO> CreateUser(User user)
-        {
-           return Ok(user);
-        }
+            public TarefasController(AppDbContext context)
+            {
+                _context = context;
+            }
 
-        [HttpPut("{Id}")]
-        public ActionResult<UserDTO> UpdateUser(int Id, User user)
-        {
-            return Ok(user);
-        }
+            [HttpGet("{Id}")]
+            public ActionResult<UserDTO> GetUserById(int UserId)
+            {
+                var user = _context.Users.Find(UserId);
 
-        [HttpDelete("{Id}")]
-        public ActionResult<UserDTO> DeleteUser(int Id)
-        {
-            return Ok();
+                if (user == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok();
+            }
+            
+
+            [HttpPost]
+            public ActionResult<UserDTO> CreateUser(User user)
+            {
+                _context.Users.Add(user);
+                _context.SaveChanges();
+
+                return Ok();
+            }
+
+            [HttpPut("{Id}")]
+            public ActionResult<UserDTO> UpdateUser(int Id, User user)
+            {
+                return Ok(user);
+            }
+
+            [HttpDelete("{Id}")]
+            public ActionResult<UserDTO> DeleteUser(int Id)
+            {
+                return Ok();
+            }
+
         }
 
     }        

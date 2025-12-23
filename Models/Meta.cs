@@ -21,10 +21,10 @@ namespace Gestão_de_metas_e_Performance.Models
         public EnumStatus StatusMeta { get; set; }
 
         [Required]
-        public DateTime Inicial { get; set; }
+        public DateTime InicialDate { get; set; }
 
         [Required]
-        public DateTime Final { get; set; }
+        public DateTime FinalDate { get; set; }
 
     }
 }
